@@ -1,6 +1,6 @@
 <?php
 // Database configuration
-$host = 'localhost:3306';  // Replace with your actual database host
+$host = 'localhost';// Replace with your actual database host
 $user = 'root';  // Replace with your actual database username
 $pass = '';  // Replace with your actual database password
 $db = 'records_app';  // Replace with your actual database name

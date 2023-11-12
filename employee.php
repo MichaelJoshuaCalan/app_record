@@ -1,26 +1,9 @@
 <?php
 require_once('config\config.php');
 require_once('config\db.php');
-require 'vendor/autoload.php';
-$faker = Faker\Factory::create('en_PH');
-$conn = mysqli_connect("localhost:3306", "root", "", "records_app");
-$stmt = "SELECT * FROM `employees`";
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} else {
-    for ($i = 6; $i <= 200; $i++) {
-        
-        $lastName = mysqli_real_escape_string($conn, $faker->lastname);
-        $firstName = mysqli_real_escape_string($conn, $faker->firstname);
-        $office_id= mysqli_real_escape_string($conn, $faker->randomElement(array(1,2,3)));
-        $address = mysqli_real_escape_string($conn, $faker->address);
+$sql_command = "SELECT * FROM `employees`";
 
-        $query = "INSERT INTO employees (last_name, first_name, office, address) 
-          VALUES ('$lastName', '$firstName', '$office_id', '$address')";
-        mysqli_query($conn, $query);  
-    }
-}
-$query_result = mysqli_fetch_all(mysqli_query($conn, $stmt), MYSQLI_ASSOC);
+$command_result = mysqli_fetch_all(mysqli_query($conn, $sql_command), MYSQLI_ASSOC);
 ?>
 
 <!DOCTYPE html>
